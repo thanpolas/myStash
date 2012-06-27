@@ -1,0 +1,7 @@
+{
+  "lib/name.js": "lib/{%= name %}.js",
+  "lib/name.export.js": "lib/{%= name %}.export.js",
+  "test/unit/name.test.js": "test/unit/{%= name %}.test.js",
+  "dist/name.min.js": "dist/{%= name %}.min.js",
+  "build/name.concat.js": "build/{%= name %}.concat.js"
+}
