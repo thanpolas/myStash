@@ -1,0 +1,14 @@
+{
+	"auto_upgrade_last_run": 1341929970,
+	"installed_packages":
+	[
+		"Alignment",
+		"DocBlockr",
+		"Git",
+		"JsFormat",
+		"Package Control",
+		"PhpDoc",
+		"phpDocumentor",
+		"Yii Framework Snippets"
+	]
+}

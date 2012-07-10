@@ -1,0 +1,25 @@
+{
+    "javascript_linter": "jshint",
+
+    // jshint: options for linting JavaScript. See http://jshint.com/#docs for more info.
+    // By deault, eval is allowed.
+    "jshint_options":
+    {
+        "evil": true,
+        "regexdash": true,
+        "browser": true,
+        "wsh": true,
+        "trailing": true,
+        "sub": true,
+        "latedef": true,
+        "undef": true,
+        "unused": true,
+        "eqeqeq": false,
+        "devel": true,
+        "jquery": true,
+        "predef": [
+        	"PPH",
+            "plupload"
+        ]
+    }
+}
