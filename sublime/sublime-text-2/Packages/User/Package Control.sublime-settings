@@ -1,12 +1,14 @@
 {
-	"auto_upgrade_last_run": 1341929970,
+	"auto_upgrade_last_run": 1344583654,
 	"installed_packages":
 	[
 		"Alignment",
+		"BracketHighlighter",
 		"DocBlockr",
 		"Git",
 		"JsFormat",
 		"Package Control",
+		"Phpcs",
 		"PhpDoc",
 		"phpDocumentor",
 		"SublimeCodeIntel",

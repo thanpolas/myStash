@@ -1,2 +1,5 @@
-[
-]
+{
+    "angle_language_list" : ["HTML","HTML 5","XML","PHP", "javascript"],
+    "tag_language_list"   : ["HTML","HTML 5","XML","PHP", "javascript"]
+
+}
