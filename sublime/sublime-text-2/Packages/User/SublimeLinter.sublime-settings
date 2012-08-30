@@ -3,8 +3,7 @@
 
     // jshint: options for linting JavaScript. See http://jshint.com/#docs for more info.
     // By deault, eval is allowed.
-    "jshint_options":
-    {
+      "jshint_options": {
         "evil": true,
         "regexdash": true,
         "browser": true,
@@ -17,9 +16,35 @@
         "eqeqeq": false,
         "devel": true,
         "jquery": true,
+        "node": true,
+        "globalstrict": false,
+        "strict": false,
+        "laxcomma": true,
         "predef": [
-        	"PPH",
-            "plupload"
+            "global",
+            "COMPILED",
+
+
+            // my projects
+            "ss",
+            "ssd",
+            "goog",
+            "FB",
+
+            // QUnit globals
+            "module",
+            "test",
+            "ok",
+            "stop",
+            "start",
+            "expect",
+            "equal",
+            "notEqual",
+            "deepEqual",
+            "notDeepEqual",
+            "strictEqual",
+            "notStrictEqual",
+            "raises"
         ]
     }
 }
