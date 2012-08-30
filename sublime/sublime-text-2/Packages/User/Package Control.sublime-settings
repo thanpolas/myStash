@@ -3,10 +3,16 @@
 	"installed_packages":
 	[
 		"Alignment",
+		"BracketHighlighter",
 		"DocBlockr",
 		"Git",
 		"Jade",
+		"JsFormat",
 		"Package Control",
-		"SublimeCodeIntel"
+		"Phpcs",
+		"PhpDoc",
+		"phpDocumentor",
+		"SublimeCodeIntel",
+		"Yii Framework Snippets"
 	]
 }
