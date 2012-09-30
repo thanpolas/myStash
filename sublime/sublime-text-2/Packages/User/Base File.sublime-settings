@@ -1,0 +1,10 @@
+{
+    /*
+        Sets the mode in which SublimeCodeIntel runs:
+
+        true - Enabled (the default).
+        false - Disabled.
+    */
+    "codeintel": false,
+    "codeintel_live": true
+}

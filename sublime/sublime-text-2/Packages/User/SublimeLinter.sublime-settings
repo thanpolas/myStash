@@ -28,6 +28,14 @@
             // my projects
             "ss",
             "ssd",
+            "app",
+
+            // various libs
+            "Backbone",
+            "_",
+            "animatedcollapse",
+            "geocoder",
+            "google",
             "goog",
             "FB",
 
