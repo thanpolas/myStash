@@ -36,3 +36,5 @@ lg = log -p
 	added = yellow
 	changed = green
 	untracked = cyan
+[credential]
+        helper = osxkeychain

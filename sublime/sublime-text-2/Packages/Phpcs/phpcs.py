@@ -8,7 +8,6 @@ import sublime
 import sublime_plugin
 import HTMLParser
 
-
 settings = sublime.load_settings('phpcs.sublime-settings')
 
 class Pref:
@@ -24,17 +23,22 @@ class Pref:
         Pref.phpcs_show_quick_panel = bool(settings.get('phpcs_show_quick_panel'))
 
         Pref.phpcs_sniffer_run = bool(settings.get('phpcs_sniffer_run'))
+        Pref.phpcs_command_on_save = bool(settings.get('phpcs_command_on_save'))
         Pref.phpcs_executable_path = settings.get('phpcs_executable_path', '')
         Pref.phpcs_additional_args = settings.get('phpcs_additional_args', {})
 
+        Pref.php_cs_fixer_on_save = settings.get('php_cs_fixer_on_save')
+        Pref.php_cs_fixer_show_quick_panel = settings.get('php_cs_fixer_show_quick_panel')
         Pref.php_cs_fixer_executable_path = settings.get('php_cs_fixer_executable_path', '')
         Pref.php_cs_fixer_additional_args = settings.get('php_cs_fixer_additional_args', {})
 
         Pref.phpcs_linter_run = bool(settings.get('phpcs_linter_run'))
+        Pref.phpcs_linter_command_on_save = bool(settings.get('phpcs_linter_command_on_save'))
         Pref.phpcs_php_path = settings.get('phpcs_php_path', '')
         Pref.phpcs_linter_regex = settings.get('phpcs_linter_regex')
 
         Pref.phpmd_run = settings.get('phpmd_run')
+        Pref.phpmd_command_on_save = settings.get('phpmd_command_on_save')
         Pref.phpmd_executable_path = settings.get('phpmd_executable_path', '')
         Pref.phpmd_additional_args = settings.get('phpmd_additional_args')
 
@@ -50,14 +54,19 @@ Pref.load()
     'phpcs_show_errors_in_status',
     'phpcs_show_quick_panel',
     'phpcs_sniffer_run',
+    'phpcs_command_on_save',
     'phpcs_executable_path',
     'phpcs_additional_args',
+    'php_cs_fixer_on_save',
+    'php_cs_fixer_show_quick_panel',
     'php_cs_fixer_executable_path',
     'php_cs_fixer_additional_args',
     'phpcs_linter_run',
+    'phpcs_linter_command_on_save',
     'phpcs_php_path',
     'phpcs_linter_regex',
     'phpmd_run',
+    'phpmd_command_on_save',
     'phpmd_executable_path',
     'phpmd_additional_args']]
 
@@ -268,9 +277,19 @@ class PhpcsCommand():
     def run(self, path, event=None):
         self.event = event
         self.checkstyle_reports = []
-        self.checkstyle_reports.append(['Linter', Linter().get_errors(path), 'cross'])
-        self.checkstyle_reports.append(['Sniffer', Sniffer().get_errors(path), 'dot'])
-        self.checkstyle_reports.append(['MessDetector', MessDetector().get_errors(path), 'dot'])
+
+        if event != 'on_save':
+            self.checkstyle_reports.append(['Linter', Linter().get_errors(path), 'cross'])
+            self.checkstyle_reports.append(['Sniffer', Sniffer().get_errors(path), 'dot'])
+            self.checkstyle_reports.append(['MessDetector', MessDetector().get_errors(path), 'dot'])
+        else:
+            if Pref.phpcs_linter_command_on_save == True:
+                self.checkstyle_reports.append(['Linter', Linter().get_errors(path), 'cross'])
+            if Pref.phpcs_command_on_save == True:
+                self.checkstyle_reports.append(['Sniffer', Sniffer().get_errors(path), 'dot'])
+            if Pref.phpmd_command_on_save == True:
+                self.checkstyle_reports.append(['MessDetector', MessDetector().get_errors(path), 'dot'])
+
         sublime.set_timeout(self.generate, 0)
 
     def clear_sniffer_marks(self):
@@ -336,7 +355,8 @@ class PhpcsCommand():
         for fix in fixes:
             self.error_list.append(fix.get_message())
 
-        self.show_quick_panel()
+        if Pref.php_cs_fixer_show_quick_panel == True:
+            self.show_quick_panel()
 
     def on_quick_panel_done(self, picked):
         if picked == -1:
@@ -355,6 +375,27 @@ class PhpcsCommand():
 
         return self.error_lines[line + 1]
 
+    def get_next_error(self, line):
+        current_line = line + 1
+
+        cache_error=None
+        # todo: Need a way of getting the line count of the current file!
+        cache_line=1000000
+        for error in self.report:
+            error_line = error.get_line()
+
+            if cache_error != None:
+                cache_line = cache_error.get_line()
+
+            if int(error_line) > int(current_line) and int(error_line) < int(cache_line):
+                cache_error = error
+
+        if cache_error != None:
+            pt = cache_error.get_point()
+            self.window.active_view().sel().clear()
+            self.window.active_view().sel().add(sublime.Region(pt))
+            self.window.active_view().show(pt)
+
 
 class PhpcsTextBase(sublime_plugin.TextCommand):
     """Base class for Text commands in the plugin, mainly here to check php files"""
@@ -367,7 +408,7 @@ class PhpcsTextBase(sublime_plugin.TextCommand):
         if not PhpcsTextBase.should_execute(self.view):
             return "Invalid file format"
         else:
-            return description
+            return self.description
 
     @staticmethod
     def should_execute(view):
@@ -398,6 +439,21 @@ class PhpcsShowPreviousErrors(PhpcsTextBase):
     def run(self, args):
         cmd = PhpcsCommand.instance(self.view, False)
         cmd.show_quick_panel()
+
+    def is_enabled(self):
+        '''This command is only enabled if it's a PHP buffer with previous errors.'''
+        return PhpcsTextBase.should_execute(self.view) \
+            and PhpcsCommand.instance(self.view, False) \
+            and len(PhpcsCommand.instance(self.view, False).error_list)
+
+
+class PhpcsGotoNextErrorCommand(PhpcsTextBase):
+    """Go to the next error from the current position"""
+    def run(self, args):
+        line = self.view.rowcol(self.view.sel()[0].end())[0]
+
+        cmd = PhpcsCommand.instance(self.view)
+        next_line = cmd.get_next_error(line)
 
     def is_enabled(self):
         '''This command is only enabled if it's a PHP buffer with previous errors.'''
@@ -463,6 +519,10 @@ class PhpcsEventListener(sublime_plugin.EventListener):
                 cmd = PhpcsCommand.instance(view)
                 thread = threading.Thread(target=cmd.run, args=(view.file_name(), 'on_save'))
                 thread.start()
+
+        if Pref.php_cs_fixer_on_save == True:
+            cmd = PhpcsCommand.instance(view)
+            cmd.fix_standards_errors(view.file_name())
 
     def on_selection_modified(self, view):
         if not PhpcsTextBase.should_execute(view):

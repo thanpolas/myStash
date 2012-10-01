@@ -1,6 +1,29 @@
 Sublime PHP CodeSniffer, Linter and Mess Detector Plugin Changelog
 ==================================================================
 
+4.5.1
+-----
+* Minor changes to the README to better explain non package control installation.
+* Minor change to README for naming of the plugin
+* Minor change to when the "Goto Next Error" context menu is enabled
+
+4.5
+---
+* Define a setting "php_cs_fixer_show_quick_panel" that stops quick panel displaying for php-cs-fixer. Thanks to [Kevin Perrine](https://github.com/kevinsperrine/) for the pull request
+
+4.4.1
+-----
+* Blank out the default setting for php_cs_fixer_executable_path. Thanks to [Eric Lewis](https://github.com/ericandrewlewis/) for the pull request.
+
+4.4
+---
+* Provide configuration options for each command to execute on save. Thanks to [Jeremy Romey](https://github.com/jeremyFreeAgent) for the [suggestion](https://github.com/benmatselby/sublime-phpcs/issues/36)
+
+4.3
+---
+* Ehancement for [GH-34](https://github.com/benmatselby/sublime-phpcs/issues/34) which provides a command to "Goto Next Error" which can also have a shortcut key assigned to it. Thanks to [Casey Becking](https://github.com/caseybecking) for raising the feature request
+* Ability to fun PHP-CS-Fixer on save now. Thanks to [Cedric Lombardot](https://github.com/cedriclombardot) for raising the feature request
+
 4.2
 ---
 * Ability to configure if you want the errors to be highlighted in the editor. Thanks to [Aleksandr Gornostal](https://github.com/gornostal)

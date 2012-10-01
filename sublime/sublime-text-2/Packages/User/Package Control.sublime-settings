@@ -1,5 +1,6 @@
 {
-	"auto_upgrade_last_run": 1346345318,
+	"auto_upgrade_last_run": 1349079598,
+	"git_binary": "/usr/local/git/bin/git",
 	"installed_packages":
 	[
 		"Alignment",
@@ -12,6 +13,7 @@
 		"Phpcs",
 		"PhpDoc",
 		"phpDocumentor",
+		"Sublime-HTMLPrettify",
 		"SublimeCodeIntel",
 		"Yii Framework Snippets"
 	]
