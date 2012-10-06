@@ -1,3 +1,6 @@
 [submodule "bin"]
 	path = bin
 	url = git@github.com:thanpolas/shell_helpers.git
+[submodule "dotfiles"]
+	path = dotfiles
+	url = git@github.com:thanpolas/dotfiles.git

@@ -13,6 +13,21 @@
 		<string>.profile</string>
 		<string>.bash_logout</string>
 		<string>.textmate_init</string>
+		<string>.aliases</string>
+		<string>.bash_profile</string>
+		<string>.bash_prompt</string>
+		<string>.bashrc</string>
+		<string>.brew</string>
+		<string>.exports</string>
+		<string>.functions</string>
+		<string>.git</string>
+		<string>.gitattributes</string>
+		<string>.gitconfig</string>
+		<string>.gitignore</string>
+		<string>.inputrc</string>
+		<string>.osx</string>
+		<string>.vim</string>
+		<string>.vimrc</string>
 	</array>
 	<key>firstLineMatch</key>
 	<string>^#!.*\b(bash|zsh|sh|tcsh)|^#\s*-\*-[^*]*mode:\s*shell-script[^*]*-\*-</string>
