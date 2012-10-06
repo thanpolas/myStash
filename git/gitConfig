@@ -22,6 +22,7 @@ lg = log -p
 [core]
 	editor = vi
 	autocrlf = input
+	excludesfile = /Users/thanpolas/.gitignore
 [color]
 	branch = auto
 	ui = auto

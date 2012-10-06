@@ -21,6 +21,7 @@ class Pref:
         Pref.phpcs_outline_for_errors = bool(settings.get('phpcs_outline_for_errors'))
         Pref.phpcs_show_errors_in_status = bool(settings.get('phpcs_show_errors_in_status'))
         Pref.phpcs_show_quick_panel = bool(settings.get('phpcs_show_quick_panel'))
+        Pref.phpcs_php_prefix_path = settings.get('phpcs_php_prefix_path', '')
 
         Pref.phpcs_sniffer_run = bool(settings.get('phpcs_sniffer_run'))
         Pref.phpcs_command_on_save = bool(settings.get('phpcs_command_on_save'))
@@ -43,33 +44,6 @@ class Pref:
         Pref.phpmd_additional_args = settings.get('phpmd_additional_args')
 
 Pref.load()
-
-[settings.add_on_change(setting, Pref.load) for setting in [
-    'show_debug',
-    'extensions_to_execute',
-    'phpcs_execute_on_save',
-    'phpcs_show_errors_on_save',
-    'phpcs_show_gutter_marks',
-    'phpcs_outline_for_errors',
-    'phpcs_show_errors_in_status',
-    'phpcs_show_quick_panel',
-    'phpcs_sniffer_run',
-    'phpcs_command_on_save',
-    'phpcs_executable_path',
-    'phpcs_additional_args',
-    'php_cs_fixer_on_save',
-    'php_cs_fixer_show_quick_panel',
-    'php_cs_fixer_executable_path',
-    'php_cs_fixer_additional_args',
-    'phpcs_linter_run',
-    'phpcs_linter_command_on_save',
-    'phpcs_php_path',
-    'phpcs_linter_regex',
-    'phpmd_run',
-    'phpmd_command_on_save',
-    'phpmd_executable_path',
-    'phpmd_additional_args']]
-
 
 def debug_message(msg):
     if Pref.show_debug == True:
@@ -162,13 +136,22 @@ class Fixer(ShellCommand):
     """Concrete class for PHP-CS-Fixer"""
     def execute(self, path):
 
+        args = []
+
+        if Pref.phpcs_php_prefix_path != "":
+            args = [Pref.phpcs_php_prefix_path]
+
         if Pref.php_cs_fixer_executable_path != "":
-            args = [Pref.php_cs_fixer_executable_path]
+            if (len(args) > 0):
+                args.append(Pref.php_cs_fixer_executable_path)
+            else:
+                args = [Pref.php_cs_fixer_executable_path]
         else:
             debug_message("php_cs_fixer_executable_path is not set, therefore cannot execute")
             return
 
         args.append("fix")
+        args.append(os.path.normpath(path))
         args.append("--verbose")
 
         # Add the additional arguments from the settings file to the command
@@ -178,7 +161,6 @@ class Fixer(ShellCommand):
                 arg += "=" + value
             args.append(arg)
 
-        args.append(os.path.normpath(path))
         self.parse_report(args)
 
     def parse_report(self, args):
@@ -197,10 +179,20 @@ class MessDetector(ShellCommand):
         if Pref.phpmd_run != True:
             return
 
+        args = []
+
+        if Pref.phpcs_php_prefix_path != "":
+            args = [Pref.phpcs_php_prefix_path]
+
         if Pref.phpmd_executable_path != "":
-            args = [Pref.phpmd_executable_path]
+            application_path = Pref.phpmd_executable_path
         else:
-            args = ['phpmd']
+            application_path = 'phpmd'
+
+        if (len(args) > 0):
+            args.append(application_path)
+        else:
+            args = [application_path]
 
         args.append(os.path.normpath(path))
         args.append('text')
@@ -279,12 +271,12 @@ class PhpcsCommand():
         self.checkstyle_reports = []
 
         if event != 'on_save':
-            self.checkstyle_reports.append(['Linter', Linter().get_errors(path), 'cross'])
+            self.checkstyle_reports.append(['Linter', Linter().get_errors(path), 'dot'])
             self.checkstyle_reports.append(['Sniffer', Sniffer().get_errors(path), 'dot'])
             self.checkstyle_reports.append(['MessDetector', MessDetector().get_errors(path), 'dot'])
         else:
             if Pref.phpcs_linter_command_on_save == True:
-                self.checkstyle_reports.append(['Linter', Linter().get_errors(path), 'cross'])
+                self.checkstyle_reports.append(['Linter', Linter().get_errors(path), 'dot'])
             if Pref.phpcs_command_on_save == True:
                 self.checkstyle_reports.append(['Sniffer', Sniffer().get_errors(path), 'dot'])
             if Pref.phpmd_command_on_save == True:
