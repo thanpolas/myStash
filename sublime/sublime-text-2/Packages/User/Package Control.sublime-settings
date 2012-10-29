@@ -1,13 +1,15 @@
 {
-	"auto_upgrade_last_run": 1349526339,
+	"auto_upgrade_last_run": 1351427821,
 	"git_binary": "/usr/local/git/bin/git",
 	"installed_packages":
 	[
 		"Alignment",
 		"BracketHighlighter",
+		"CoffeeScript",
 		"DocBlockr",
 		"Dotfiles Syntax Highlighting",
 		"Git",
+		"HTML5",
 		"Jade",
 		"JsFormat",
 		"Package Control",
@@ -16,6 +18,7 @@
 		"phpDocumentor",
 		"Sublime-HTMLPrettify",
 		"SublimeCodeIntel",
+		"SublimeLinter",
 		"Yii Framework Snippets"
 	]
 }

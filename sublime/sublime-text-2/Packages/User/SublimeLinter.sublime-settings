@@ -1,6 +1,6 @@
 {
     "javascript_linter": "jshint",
-
+    "pep8": false,
     // jshint: options for linting JavaScript. See http://jshint.com/#docs for more info.
     // By deault, eval is allowed.
       "jshint_options": {
@@ -29,6 +29,8 @@
             "ss",
             "ssd",
             "app",
+            "kt",
+            "TrulyShare",
 
             // various libs
             "Backbone",
@@ -38,6 +40,7 @@
             "google",
             "goog",
             "FB",
+            "Handlebars",
 
             // QUnit globals
             "module",

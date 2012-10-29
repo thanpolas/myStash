@@ -6,7 +6,12 @@
 { "keys": ["alt+shift+1"], "command": "move_to_group", "args": { "group": 0 } },
 { "keys": ["alt+shift+2"], "command": "move_to_group", "args": { "group": 1 } },
 { "keys": ["alt+shift+3"], "command": "move_to_group", "args": { "group": 2 } },
-{ "keys": ["alt+shift+4"], "command": "move_to_group", "args": { "group": 3 } }
+{ "keys": ["alt+shift+4"], "command": "move_to_group", "args": { "group": 3 } },
 
+{ "keys": ["super+alt+shift+w"], "command": "toggle_setting", "args": {"setting": "word_wrap"}},
+
+
+{ "keys": ["super+ctrl+c"], "command": "closure_snippet" },
+{ "keys": ["super+ctrl+z"], "command": "param_magic" }
 
 ]
