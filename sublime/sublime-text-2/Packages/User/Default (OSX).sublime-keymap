@@ -12,6 +12,8 @@
 
 
 { "keys": ["super+ctrl+c"], "command": "closure_snippet" },
-{ "keys": ["super+ctrl+z"], "command": "param_magic" }
+{ "keys": ["super+ctrl+z"], "command": "auto_param" },
+
+{ "keys": ["super+ctrl+x"], "command": "js_run"}
 
 ]
