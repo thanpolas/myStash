@@ -41,6 +41,12 @@
             "goog",
             "FB",
             "Handlebars",
+            "Handsontable",
+
+            // MOCHA / CHAI / rest testing stack
+            "chai",
+            "describe",
+            "it",
 
             // QUnit globals
             "module",

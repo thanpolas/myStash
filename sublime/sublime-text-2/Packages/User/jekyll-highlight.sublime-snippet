@@ -1,0 +1,9 @@
+<snippet>
+  <content><![CDATA[{% highlight ${1:javascript} linenos=table %}
+$0
+{% endhighlight %}
+]]></content>
+    <tabTrigger>%%</tabTrigger>
+    <scope>source.md, text, html</scope>
+    <description>Jekyll syntax highlighting</description>
+</snippet>

@@ -12,8 +12,8 @@
 
 
 { "keys": ["super+ctrl+c"], "command": "closure_snippet" },
-{ "keys": ["super+ctrl+z"], "command": "auto_param" },
-
-{ "keys": ["super+ctrl+x"], "command": "js_run"}
+{ "keys": ["super+ctrl+z"], "command": "auto_doc_blockr", "args": {"trigger":"command"}},
+{ "keys": ["super+ctrl+x"], "command": "js_run"},
+{ "keys": ["super+ctrl+r"], "command": "auto_doc_blockr_test"}
 
 ]

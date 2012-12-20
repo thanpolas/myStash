@@ -1,6 +1,0 @@
-<snippet>
-    <content><![CDATA[CVarDumper::dump(${1:var}, ${2:depth}, ${3:highlight});]]></content>
-    <tabTrigger>cvar</tabTrigger>
-    <scope>source.php,text</scope>
-    <description>Yii CVarDumper</description>
-</snippet>

@@ -1,5 +1,5 @@
 {
-	"auto_upgrade_last_run": 1352465757,
+	"auto_upgrade_last_run": null,
 	"git_binary": "/usr/local/git/bin/git",
 	"installed_packages":
 	[
@@ -8,19 +8,23 @@
 		"CoffeeScript",
 		"Dotfiles Syntax Highlighting",
 		"EditorConfig",
+		"Emmet",
 		"Git",
 		"HTML5",
 		"Jade",
 		"JsFormat",
 		"JsRun",
+		"LESS",
+		"Liquid",
+		"Mocha Snippets",
+		"Modific",
 		"Package Control",
-		"Phpcs",
 		"PhpDoc",
 		"phpDocumentor",
+		"SFTP",
 		"Sublime-HTMLPrettify",
 		"SublimeCodeIntel",
 		"SublimeLinter",
-		"Tag",
-		"ZenCoding"
+		"Tag"
 	]
 }
