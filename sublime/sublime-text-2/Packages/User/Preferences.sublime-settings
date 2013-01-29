@@ -2,49 +2,53 @@
 	"auto_match_enabled": true,
 	"autosave": false,
 	"color_scheme": "Packages/Color Scheme - Default/Solarized (Dark).tmTheme",
-	"font_size": 14.0,
+	"font_size": 15.0,
 	"ignored_packages":
-	[
-		"LaTeX",
-		"Scala",
-		"Vintage",
-		"Lua",
-		"Matlab",
-		"Erlang",
-		"ASP",
-		"C#",
-		"AppleScript",
-		"Emmet",
-		"Groovy",
-		"D",
-		"Lisp",
-		"Modific",
-		"C++",
-		"Objective-C",
-		"Clojure",
-		"SublimeCodeIntel",
-		"OCaml",
-		"Graphviz",
-		"Haskell",
-		"JsRun",
-		"Go"
-	],
+		[
+			"LaTeX",
+			"Scala",
+			"Vintage",
+			"Lua",
+			"Matlab",
+			"Erlang",
+			"ASP",
+			"C#",
+			"AppleScript",
+			"Emmet",
+			"Groovy",
+			"D",
+			"Lisp",
+			"Modific",
+			"Objective-C",
+			"Clojure",
+			"SublimeCodeIntel",
+			"OCaml",
+			"Graphviz",
+			"Haskell",
+			"JsRun",
+			"Go"
+		],
 	"pep8_ignore":
-	[
-		"E225",
-		"E231",
-		"E501",
-		"E502",
-		"E301",
-		"E302",
-		"E303",
-		"W292",
-		"W293",
-		"E203"
-	],
+		[
+			"E225",
+			"E231",
+			"E501",
+			"E502",
+			"E301",
+			"E302",
+			"E303",
+			"W292",
+			"W293",
+			"E203"
+		],
 	"save_on_focus_lost": false,
 	"tab_size": 2,
 	"translate_tabs_to_spaces": true,
 	"trimTrailingWhiteSpaceOnSave": true,
-	"word_wrap": "false"
+	"word_wrap": "false",
+	"extensions":
+	[
+		".jshintrc"
+	]
+
 }

@@ -8106,12 +8106,14 @@ emmet.define('expandAbbreviation', function(require, _) {
 			var replaceRange = require('range').create(editor.getCaretPos(), selRange.length());
 			editor.replaceContent(content, replaceRange.start, replaceRange.end, true);
 			editor.createSelection(replaceRange.start, replaceRange.start + content.length);
-			return;
+			return true;
 		}
 		
 		if (!actions.run('expand_abbreviation', editor, syntax, profile)) {
 			editor.replaceContent(indent, editor.getCaretPos());
 		}
+		
+		return true;
 	}, {hidden: true});
 	
 	// XXX setup default handler
@@ -8589,8 +8591,12 @@ emmet.exec(function(require, _) {
 	 */
 	actions.add('next_edit_point', function(editor) {
 		var newPoint = findNewEditPoint(editor, 1);
-		if (newPoint != -1)
+		if (newPoint != -1) {
 			editor.setCaretPos(newPoint);
+			return true;
+		}
+		
+		return false;
 	});
 });/**
  * Actions that use stream parsers and tokenizers for traversing:
@@ -9916,7 +9922,9 @@ emmet.exec(function(require, _) {
 	
 	require('actions').add('update_image_size', function(editor) {
 		var result;
-		if (String(editor.getSyntax()) == 'css') {
+		// this action will definitely won’t work in SASS dialect,
+		// but may work in SCSS or LESS
+		if (_.include(['css', 'less', 'scss'], String(editor.getSyntax()))) {
 			result = updateImageSizeCSS(editor);
 		} else {
 			result = updateImageSizeHTML(editor);
@@ -11999,6 +12007,10 @@ emmet.exec(function(require, _){
 		});
 	}
 	
+	function isRoot(item) {
+		return !item.parent;
+	}
+	
 	/**
 	 * Processes element with matched resource of type <code>snippet</code>
 	 * @param {AbbreviationNode} item
@@ -12009,7 +12021,7 @@ emmet.exec(function(require, _){
 		item.start = item.end = '';
 		if (!isVeryFirstChild(item) && profile.tag_nl !== false && shouldAddLineBreak(item, profile)) {
 			// check if we’re not inside inline element
-			if (!require('abbreviationUtils').isInline(item.parent)) {
+			if (isRoot(item.parent) || !require('abbreviationUtils').isInline(item.parent)) {
 				item.start = require('utils').getNewline() + item.start;
 			}
 		}
@@ -12622,6 +12634,28 @@ emmet.define('bootstrap', function(require, _) {
 	function getBasePath(path) {
 		return path.substring(0, path.length - getFileName(path).length);
 	}
+
+	/**
+	 * Normalizes profile definition: converts some
+	 * properties to valid data types
+	 * @param {Object} profile
+	 * @return {Object}
+	 */
+	function normalizeProfile(profile) {
+		if (_.isObject(profile)) {
+			if ('indent' in profile) {
+				profile.indent = !!profile.indent;
+			}
+
+			if ('self_closing_tag' in profile) {
+				if (_.isNumber(profile.self_closing_tag)) {
+					profile.self_closing_tag = !!profile.self_closing_tag;
+				}
+			}
+		}
+
+		return profile;
+	}
 	
 	return {
 		/**
@@ -12762,7 +12796,7 @@ emmet.define('bootstrap', function(require, _) {
 				if (!(syntax in snippets)) {
 					snippets[syntax] = {};
 				}
-				snippets[syntax].profile = options;
+				snippets[syntax].profile = normalizeProfile(options);
 			});
 			
 			this.loadSnippets(snippets);
@@ -12775,7 +12809,7 @@ emmet.define('bootstrap', function(require, _) {
 		loadProfiles: function(profiles) {
 			var profile = require('profile');
 			_.each(this.parseJSON(profiles), function(options, name) {
-				profile.create(name, options);
+				profile.create(name, normalizeProfile(options));
 			});
 		},
 		
