@@ -4,3 +4,6 @@
 [submodule "dotfiles"]
 	path = dotfiles
 	url = git@github.com:thanpolas/dotfiles.git
+[submodule "Limechat-Themes"]
+	path = Limechat-Themes
+	url = git@github.com:jschoolcraft/Limechat-Themes.git

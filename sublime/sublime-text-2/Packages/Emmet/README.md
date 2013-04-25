@@ -2,11 +2,17 @@
 
 Official [Emmet](http://emmet.io) plugin (previously called _Zen Coding_) for Sublime Text 2.
 
-*Warning:* this plugin may not work at all in some OSes since it written in JavaScript and uses [PyV8](http://code.google.com/p/pyv8/) and [Google V8](https://developers.google.com/v8/) binaries to run. If you experience problems or editor crashes please [fill an issue](https://github.com/sergeche/emmet-sublime/issues).
+* [How to install](#how-to-install)
+* [Available actions](#available-actions)
+* [Extensions support](#extensions-support)
+* [Overriding keyboard shortcuts](#overriding-keyboard-shortcuts)
+* [Tab key handler](#tab-key-handler)
 
 ## How to install
 
-1. Clone or [download](/sergeche/emmet-sublime/archive/master.zip) git repo into your packages folder (in ST2, find Browse Packages... menu item to open this folder)
+*Warning:* this plugin may not work at all in some OSes since it written in JavaScript and uses [PyV8](http://code.google.com/p/pyv8/) and [Google V8](https://developers.google.com/v8/) binaries to run. If you experience problems or editor crashes please [fill an issue](https://github.com/sergeche/emmet-sublime/issues).
+
+1. Clone or [download](https://github.com/sergeche/emmet-sublime/archive/master.zip) git repo into your packages folder (in ST2, find Browse Packages... menu item to open this folder)
 2. Restart ST2 editor (if required)
 
 Or with [Package Control](http://wbond.net/sublime_packages/package_control):
@@ -38,7 +44,7 @@ Or with [Package Control](http://wbond.net/sublime_packages/package_control):
 * [Wrap With Abbreviation](http://docs.emmet.io/actions/wrap-with-abbreviation/) — <kbd>⌃W</kbd> / <kbd>Shift+Ctrl+G</kbd>
 * [Go to Edit Point](http://docs.emmet.io/actions/go-to-edit-point/) — <kbd>Ctrl+Alt+→</kbd> or <kbd>Ctrl+Alt+←</kbd>
 * [Select Item](http://docs.emmet.io/actions/select-item/) – <kbd>⇧⌘.</kbd> or <kbd>⇧⌘,</kbd> / <kbd>Shift+Ctrl+.</kbd> or <kbd>Shift+Ctrl+,</kbd>
-* [Toggle Comment](http://docs.emmet.io/actions/toggle-comment/) — <kbd>⇧⌘/</kbd> / <kbd>Shift+Ctrl+/</kbd>
+* [Toggle Comment](http://docs.emmet.io/actions/toggle-comment/) — <kbd>⇧⌥/</kbd> / <kbd>Shift+Ctrl+/</kbd>
 * [Split/Join Tag](http://docs.emmet.io/actions/split-join-tag/) — <kbd>⇧⌘'</kbd> / <kbd>Shift+Ctrl+`</kbd>
 * [Remove Tag](http://docs.emmet.io/actions/remove-tag/) – <kbd>⌘'</kbd> / <kbd>Shift+Ctrl+;</kbd>
 * [Update Image Size](http://docs.emmet.io/actions/update-image-size/) — <kbd>⇧⌃I</kbd> / <kbd>Ctrl+U</kbd>

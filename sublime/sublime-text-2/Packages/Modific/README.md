@@ -1,7 +1,7 @@
 Modific
 =========
 
-Modific is a ST2 plugin for highlighting lines changed from the last commit (you know what I mean if you used Netbeans).
+Modific is a ST2(3) plugin for highlighting lines changed since the last commit (you know what I mean if you used Netbeans).
 
 For now it supports **Git**, **SVN**, **Bazaar** and **Mercurial**.
 
@@ -11,7 +11,7 @@ Install
 
 The easiest way to install is through **[Package Control](http://wbond.net/sublime\_packages/package\_control)**.
 
-Once you install Package Control, restart ST2 and bring up the Command Palette (`Ctrl+Shift+P` on Linux/Windows, `Cmd+Shift+P` on OS X). Select "Package Control: Install Package", wait while Package Control fetches the latest package list, then select *Modific* when the list appears. The advantage of using this method is that Package Control will automatically keep *Modific* up to date with the latest version.
+Once you install Package Control, restart ST3 and bring up the Command Palette (`Ctrl+Shift+P` on Linux/Windows, `Cmd+Shift+P` on OS X). Select "Package Control: Install Package", wait while Package Control fetches the latest package list, then select *Modific* when the list appears. The advantage of using this method is that Package Control will automatically keep *Modific* up to date with the latest version.
 
 Or you can **download** the latest source from [GitHub](https://github.com/gornostal/Modific/zipball/master) and copy the *Modific* folder to your Sublime Text "Packages" directory.
 
@@ -59,7 +59,7 @@ This command reverts modifications if your cursor stays on modified line (or if 
 
 **Go through changed lines** `Ctrl+Shift+Page Up(Down)`
 
-For those who expected to see a clone of Netbeans feature - unfortunately, with existing ST2 API that is impossible :(
+For those who expected to see a clone of Netbeans feature - unfortunately, with existing Sublime Text API that is impossible :(
 
 [Discussion on the forum](http://www.sublimetext.com/forum/viewtopic.php?f=5&t=7468)
 
@@ -76,18 +76,10 @@ If some sacred punishment has been bestowed upon you, and you have no other choi
 
 If you use different than the default theme, you can customize colors of bullets on the gutter by adding [this](https://gist.github.com/3692073) chunk of code to your theme.
 
-Known issues
-------------
+Thanks to
+---------
 
-_Issue #9_: Sometimes disappear icons in the gutter and the tabs row.
-
-If you know exactly how to reproduce those issues, please write a comment [here](https://github.com/gornostal/Modific/issues/9).
-
-My guess is there is a bug in Sublime when plugin use `add_regions` API.
-
-**Workaround:** Change color scheme, restart sublime, switch back to your favorite color scheme. (Thanks to @owend).
-
-And please, vote for this issue on the [Sublime's bug tracker](http://sublimetext.userecho.com/topic/128369-invisible-tabs-row-icons-on-the-gutter/).
+@beefsack for purchasing a license
 
 License
 -------

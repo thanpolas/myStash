@@ -1,4 +1,5 @@
 {
+    "sublimelinter": true,
     "javascript_linter": "jshint",
     "pep8": false,
     // jshint: options for linting JavaScript.
