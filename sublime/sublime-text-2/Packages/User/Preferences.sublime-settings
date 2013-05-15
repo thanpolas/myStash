@@ -2,6 +2,7 @@
 	"auto_match_enabled": true,
 	"autosave": false,
 	"color_scheme": "Packages/Color Scheme - Default/Solarized (Dark).tmTheme",
+	"detect_slow_plugins": false,
 	"extensions":
 	[
 		".jshintrc"
