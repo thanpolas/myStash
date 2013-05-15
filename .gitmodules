@@ -7,3 +7,6 @@
 [submodule "Limechat-Themes"]
 	path = Limechat-Themes
 	url = git@github.com:jschoolcraft/Limechat-Themes.git
+[submodule "sublime/sublime-text-2/Packages/tern_for_sublime"]
+	path = sublime/sublime-text-2/Packages/tern_for_sublime
+	url = git@github.com:marijnh/tern_for_sublime.git
