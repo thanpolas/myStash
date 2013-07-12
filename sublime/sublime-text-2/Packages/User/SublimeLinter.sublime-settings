@@ -1,7 +1,19 @@
 {
     "sublimelinter": true,
-    "javascript_linter": "jshint",
     "pep8": false,
+
+    "sublimelinter_mark_style": "outline",
+    "javascript_linter": "jshint",
+
+    // not there yet
+    // https://github.com/SublimeLinter/SublimeLinter/issues/85
+    // https://github.com/SublimeLinter/SublimeLinter/pull/405
+    //
+    // "sublimelinter_executable_map": {
+    //     "javascript": "jshint-node",
+    //     "jshint-node": "/Users/thanpolas/npm-global/bin/jshint"
+    // },
+
     // jshint: options for linting JavaScript.
     // See http://jshint.com/docs for more info.
     // By deault, eval is allowed.

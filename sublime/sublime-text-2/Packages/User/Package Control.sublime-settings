@@ -22,10 +22,12 @@
 		"Package Control",
 		"PhpDoc",
 		"phpDocumentor",
+		"Sass",
 		"SFTP",
 		"Sublime-HTMLPrettify",
 		"SublimeCodeIntel",
 		"SublimeLinter",
-		"Tag"
+		"Tag",
+		"WordCount"
 	]
 }
