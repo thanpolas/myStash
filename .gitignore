@@ -1,2 +1,4 @@
 sublime/sublime-text-2/Packages/Default
 sublime/sublime-text-2/Packages/SublimeLinter
+sublime/sublime-projects/
+*.last-run
