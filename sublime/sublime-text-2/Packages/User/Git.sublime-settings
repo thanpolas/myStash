@@ -1,5 +1,5 @@
 {
-  "git_command": "/usr/local/git/bin/git",
+  "git_command": "/usr/local/bin/git",
   // save before running commands
   "save_first": false
 }
