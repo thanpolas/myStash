@@ -12,14 +12,14 @@
 	],
 	"auto_match_enabled": false,
 	"autosave": false,
-	"color_scheme": "Packages/Color Scheme - Default/Solarized (Light).tmTheme",
+	"color_scheme": "Packages/Color Scheme - Default/Solarized (Dark).tmTheme",
 	"detect_slow_plugins": false,
 	"enable_live_count": false,
 	"extensions":
 	[
 		".jshintrc"
 	],
-	"font_size": 16.0,
+	"font_size": 18.0,
 	"ignored_packages":
 	[
 		"LaTeX",
